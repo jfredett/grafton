@@ -1,0 +1,15 @@
+#grafton
+
+grafton is a simple, lightweight, fast Graph Database, in the spirit of redis.
+
+## README Driven, Mother Approved
+
+This document may contain outright lies until such time as version 1.0.0 is
+released
+
+## SemVer
+
+Grafton uses Semantic Versioning. Please refer to appropriate documentation
+(semver.org) if you don't know what that means.
+
+
