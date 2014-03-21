@@ -1,4 +1,4 @@
-#grafton
+# grafton [![Build Status](https://travis-ci.org/jfredett/grafton.png?branch=master)](http://travis-ci.org/jfredett/grafton)
 
 grafton is a simple, lightweight, fast Graph Database, in the spirit of redis.
 
@@ -12,4 +12,4 @@ released
 Grafton uses Semantic Versioning. Please refer to appropriate documentation
 (semver.org) if you don't know what that means.
 
-
+------------------------------------------------------------------------------
