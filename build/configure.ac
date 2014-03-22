@@ -8,6 +8,7 @@ AC_PREREQ([2.69])
 AC_PROG_CC([clang gcc])
 
 AC_CONFIG_HEADERS([src/config.h])
+AC_INCLUDES_DEFAULT
 AC_CHECK_HEADERS([check.h])
 
 AC_OUTPUT
