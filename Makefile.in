@@ -1,0 +1,17 @@
+CC=@CC@
+CFLAGS=
+VERSION=@PACKAGE_VERSION@
+
+SRCDIR=src
+OBJDIR=obj
+TESTDIR=test
+BINDIR=bin
+LIBDIR=lib
+
+
+.DEFAULT_GOAL:=all
+
+-include build/common.make
+-include build/grafton.make
+
+all: bin/grafton
