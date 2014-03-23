@@ -1,1 +1,5 @@
 autom4te.cache/
+build/configure
+config.status
+src/config.h
+obj/**
