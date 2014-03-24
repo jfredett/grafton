@@ -24,6 +24,7 @@ DISTCLEANFILES+=$(BINDIR)/grafton
 BIN_CFLAGS=-L"$(shell readlink -f ./$(LIBDIR)/)" -lgrafton
 
 $(BINARY): $(grafton_BINOBJ) $(LIBDIR)/$(LIBSHORTNAME)
+	####==> Building $<
 	$(CC) ${BIN_CFLAGS} $(grafton_BINSRC) -lgrafton -o $@
 
 # Library
@@ -34,7 +35,9 @@ DISTCLEANFILES+=$(LIBRARY_SHORTNAME)
 LIB_CFLAGS=-shared #-Wl,-soname,lib/libgrafton.so
 
 $(LIBRARY): $(filter-out $(OBJDIR)/main.o,$(grafton_OBJECTS))
+	####==> Building $<
 	$(CC) ${LIB_CFLAGS} $< -o $@
 
 $(LIBDIR)/$(LIBSHORTNAME): $(LIBRARY)	
+	####==> Building $<
 	cp $< $@
