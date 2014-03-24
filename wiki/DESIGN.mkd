@@ -1,0 +1,92 @@
+# Design
+
+`grafton` is split into multiple, independent, communicating parts. These parts
+work together by sending messages to one another over some channel.
+
+A distinction needs to be made, here, there exist two `grafton`s, there is
+`grafton` the implementation, and `grafton` the spec. The spec is the
+(presently) unwritten _behavior_ of `grafton` the implementation. To wit, these
+'parts' which communicate over 'some channel' may be implemented as threads, as
+processes, whatever, the implementation detail should be hidden from the end
+user, so that the `grafton` spec is achieved. Some parts of the 'spec' specify
+internal design details, usually at a high level (like the design of the
+independent 'parts'), some specify how `grafton` interacts with a user, all of
+these express design goals and philosophies `grafton` tries to espouse.
+
+Each of these parts can be thought to be a Membrane (in the
+object-oriented/actor model sense) -- essentially an interface to a subgraph of
+'objects' (for lack of a better term). This membrane 'is' -- in some sense, both
+an actor (in the Actor-model sense), a thread (or process) (in the an
+implementation-detail sense, and an interface (in a philosophical sense).
+
+The breakdown of actors is as follows:
+
+* The io actor
+
+Manages access to the disk
+
+* The serializer/deserializer (aka, the translator)
+
+Turns raw JSON data (from the user) into an efficient, compressed binary format
+for storage on disk, works primarily as an interface to the io actor
+
+* The uuid service
+
+Provides UUIDs, both content-dependent and content-independent, given some Raw JSON
+or Serialized JSON
+
+* The indexing service
+
+Manages indexes, including CRUD, optimization, etc. Works with the serializer to
+store them.
+
+* The UI service
+
+Provides a frontend for all the incoming commands from a REPL. is _communicated
+with_, _does not provide the actual repl_.
+
+* The Query Service (planned)
+
+Provides access to parsing and executing stored and on-the-fly queries written
+in some query language (maybe Cypher, maybe Gremlin, maybe something custom)
+
+* The Dispatcher (needed?)
+
+Provides a way to manage the startup and shutdown of all the individual
+services. Not sure if this is needed, might just be possible to rely on a
+central 0mq and auto-discovery to avoid master-stuff.
+
+## Remaining Questions
+
+1. How, precisely, should the parts communicate? Protobuf? 0mq?
+2. Should they be independent processes? Just threads?
+
+    On this point, I suspect we might be able to get the best of both worlds,
+    suppose we communicate over some known 0mq channel (assuming it's quick
+    enough), then we could design the individual components to run in a thread,
+    but actually run them in separate processes (assuming we ensure we don't do
+    anything dirty with shared memory). This ultimately makes out-scaling easy,
+    since we can just communicate with _remote_ 0mq's or w/e, but makes up-scaling
+    also easy by allowing more effective/compact use of resources (maybe we can
+    conditionally turn on 'fast' shared-memory communication if two threads notice
+    they're in the same process, or something. ie, each thread could register to
+    the group by stating their process id, then if other threads notice, they
+    could handshake and set up a more direct line of communication.
+
+3. What about CAP?
+
+    What kind of consistency mechanism do we want? Clearly partition tolerance is
+    a must-have for scalability, so the question boils down to how to provide a
+    tradeoff between availability and consistency. We can probably crib from Riak
+    here. Personally I prefer consistency to ultra-high availability. The latter
+    can be gained by smart engineering around the system interacting with
+    `grafton`. That said -- how can we guarentee consistency? Some sort of
+    locking? I suppose we'd have to prevent parallel writes to relevant indices --
+    we could start with one big global write-lock, but more likely we'll want a
+    lower level, finer-grained lock-per-index system. When writing, we'd acquire
+    locks on all the relevant indices, update them and write to disk
+    appropriately.
+
+    3.1. if there is a per-index lock, and we grab multiple index-locks on each
+    write, do we release them as we finish writing? Or do we release them only
+    after all writing is done.

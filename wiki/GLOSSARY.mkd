@@ -1,0 +1,15 @@
+# Glossary
+
+* content-dependent UUID
+
+Essentially, a hash of the content. Useful for content-addressability
+
+* content-independent UUID
+
+A unique random string, this is the colloquial definition of 'UUID'
+
+* content-addressibility
+
+The ability to map from some piece of content to a unique identifier. This
+identifier ideally should have low similarity features (ie, small changes in the
+content result in big changes in the identifier) and low collision probability.
