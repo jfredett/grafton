@@ -3,7 +3,7 @@ AC_INIT([grafton], [0.0.1],
         [grafton],
         [http://github.com/jfredett/grafton])
 
-AC_PREREQ([2.69])
+AC_PREREQ([2.68])
 
 AC_PROG_CC([clang gcc])
 
