@@ -1,5 +1,6 @@
 CC=@CC@
 CFLAGS=-Wall -Werror -fPIC
+LIB_CFLAGS=-Wall -Werror
 VERSION=@PACKAGE_VERSION@
 
 SRCDIR=src
