@@ -1,0 +1,8 @@
+autom4te.cache/
+build/configure
+config.status
+src/config.h
+obj/**
+Makefile
+bin/*
+lib/*
