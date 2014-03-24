@@ -1,7 +1,7 @@
 grafton_SOURCES=$(shell find $(SRCDIR) -name *.c)
 grafton_OBJECTS=$(grafton_SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
-grafton_BINSRC=$(SRCDIR)/main.c
+grafton_BINSRC=$(SRCDIR)/grafton.c
 
 
 BINARY=$(BINDIR)/grafton
