@@ -15,3 +15,4 @@ all: bin/grafton lib/libgrafton.so
 -include build/grafton.make
 -include build/repo.make
 -include build/test.make
+-include build/analyze.make
