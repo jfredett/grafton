@@ -1,0 +1,27 @@
+# grafton wiki
+
+Grafton is a graph database, written in pure C, with a focus on providing a easy
+to use, performant graph database for everyday use. It incorporates ideas from
+my prototype project, [ramsey](http://github.com/jfredett/ramsey), including
+content-addressability, advanced indexing, etc.
+
+It's a work in progress, and is not yet ready for public use. Databases are
+hard, and grafton may never be available for real use, but it hopefully will
+serve as an inspiration to those who see it, whether that inspiration is to try
+to build a better version, or to try to do what I'm doing -- build something
+outside my comfort zone.
+
+## Name
+
+`grafton` is named after a local town; Grafton, Massachusetts. It was a town or
+so over from where I went to college, and had the 'Graph' sound in it. There is
+no greater significance than that.
+
+I'll probably name major releases after other town names, or something. Always
+good to have a theme.
+
+## In this wiki
+
+In this wiki, you'll find details about different `grafton` features, ideas for
+development, and generally the sum-total braindump I generate as I build this
+thing. Click the "Pages" link above and go trawling.
