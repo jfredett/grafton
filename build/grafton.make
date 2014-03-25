@@ -5,6 +5,7 @@ grafton_SOURCES=$(filter-out $(grafton_BINSRC),$(shell find $(SRCDIR) -name *.c)
 grafton_OBJECTS=$(grafton_SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 grafton_LIBNAME=lib$(grafton_NAME).so
 grafton_LONG_LIBNAME=$(grafton_LIBNAME).$(VERSION)
+grafton_DEPS=-lzmq -lczmq -lyajl
 
 BINARY=$(BINDIR)/$(grafton_NAME)
 LIBRARY=$(LIBDIR)/$(grafton_LIBNAME)
@@ -21,7 +22,7 @@ $(grafton_OBJECTS): $(grafton_SOURCES)
 DISTCLEANFILES+=$(BINARY)
 $(BINARY): $(LIBRARY)
 	####==> Building $<
-	$(CC) ${CFLAGS} ${grafton_BIN_CFLAGS} $(grafton_BINSRC) -l$(grafton_NAME) -o $@
+	$(CC) ${CFLAGS} ${grafton_BIN_CFLAGS} $(grafton_BINSRC) -l$(grafton_NAME) $(grafton_DEPS) -o $@
 
 # Library
 DISTCLEANFILES+=$(LIBRARY)
