@@ -11,9 +11,7 @@ LIBDIR=lib
 
 all: bin/grafton lib/libgrafton.so
 
-check:
-	exit 0
-
 -include build/common.make
 -include build/grafton.make
 -include build/repo.make
+-include build/test.make
