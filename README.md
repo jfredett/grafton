@@ -12,4 +12,12 @@ released
 Grafton uses Semantic Versioning. Please refer to appropriate documentation
 (semver.org) if you don't know what that means.
 
+## Dependencies
+
+Depends on:
+
+* [yajl](http://github.com/lloyd/yajl/tarball/2.1.0) ~> 2.1.0
+* [zeromq](https://github.com/zeromq/libzmq) ~> 4.0.4
+* [czmq](https://github.com/zeromq/czmq) ~> 2.0.3
+
 ------------------------------------------------------------------------------

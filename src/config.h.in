@@ -1,7 +1,10 @@
-/* config.h.in.  Generated from build/configure.ac by autoheader.  */
+/* src/config.h.in.  Generated from build/configure.ac by autoheader.  */
 
-/*  Define as 1 if you have unistd.h.  */
+/* Define to 1 if you have the <check.h> header file. */
 #undef HAVE_CHECK_H
+
+/* Define to 1 if you have the <czmq.h> header file. */
+#undef HAVE_CZMQ_H
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
@@ -29,6 +32,12 @@
 
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
+
+/* Define to 1 if you have the <yajl.h> header file. */
+#undef HAVE_YAJL_H
+
+/* Define to 1 if you have the <zeromq.h> header file. */
+#undef HAVE_ZEROMQ_H
 
 /* Define to the address where bug reports for this package should be sent. */
 #undef PACKAGE_BUGREPORT
