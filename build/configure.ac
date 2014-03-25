@@ -9,10 +9,11 @@ AC_PROG_CC([clang gcc])
 
 AC_INCLUDES_DEFAULT
 
-AC_CHECK_HEADERS([zeromq.h])
+AC_CHECK_HEADERS([zmq.h])
 AC_CHECK_HEADERS([czmq.h])
-AC_CHECK_HEADERS([yajl.h])
 AC_CHECK_HEADERS([check.h])
+# yajl doesn't have a yajl.h >.<
+AC_CHECK_HEADERS([yajl/yajl_parse.h])
 
 AC_CONFIG_HEADERS([src/config.h])
 AC_CONFIG_FILES([Makefile])
