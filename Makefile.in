@@ -1,5 +1,5 @@
 CC=@CC@
-CFLAGS=-Wall -Werror -fPIC
+CFLAGS=@CFLAGS@ 
 LIB_CFLAGS=-Wall -Werror
 VERSION=@PACKAGE_VERSION@
 
@@ -15,3 +15,4 @@ all: bin/grafton lib/libgrafton.so
 -include build/grafton.make
 -include build/repo.make
 -include build/test.make
+-include build/analyze.make

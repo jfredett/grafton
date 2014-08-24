@@ -20,7 +20,7 @@ $(grafton_OBJECTS): $(grafton_SOURCES)
 
 # Binary
 DISTCLEANFILES+=$(grafton_BINARY)
-$(grafton_BINARY): $(grafton_LIBRARY)
+$(grafton_BINARY): $(grafton_LIBRARY) $(grafton_BINSRC)
 	####==> Building $@
 	$(CC) ${CFLAGS} ${grafton_BIN_CFLAGS} $(grafton_BINSRC) $(grafton_DEPS) -o $@
 
