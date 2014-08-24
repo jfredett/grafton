@@ -1,5 +1,5 @@
 CC=@CC@
-CFLAGS=-Wall -Werror -fPIC
+CFLAGS=@CFLAGS@ 
 LIB_CFLAGS=-Wall -Werror
 VERSION=@PACKAGE_VERSION@
 
