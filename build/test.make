@@ -18,6 +18,6 @@ $(check_BINARY): $(check_OBJECTS) $(grafton_LIBRARY)
 	####==> Building $@
 	$(CC) ${CFLAGS} ${check_BIN_CFLAGS} $(check_BINSRC) $(check_DEPS) -o $@
 
-check: $(check_BINARY)
+check: $(check_BINARY) $(grafton_LIBRARY)
 	####==> Running tests
 	bin/check_grafton
