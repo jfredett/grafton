@@ -29,4 +29,4 @@ DISTCLEANFILES+=$(grafton_LIBRARY)
 
 $(grafton_LIBRARY): $(grafton_OBJECTS)
 	####==> Building $@
-	$(CC) ${LIB_CFLAGS} ${grafton_LIB_CFLAGS} $< -o $@
+	$(CC) ${LIB_CFLAGS} ${grafton_LIB_CFLAGS} $^ -o $@
