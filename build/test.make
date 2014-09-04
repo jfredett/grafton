@@ -8,7 +8,7 @@ check_DEPS=-lzmq -lczmq -lyajl -lcheck
 check_BINARY=$(BINDIR)/$(check_NAME)
 
 # Flags
-check_BIN_CFLAGS=-L"$(shell readlink -f ./$(LIBDIR)/)" -l$(grafton_NAME)
+check_BIN_CFLAGS=-L"$(shell readlink -f ./$(LIBDIR)/)" -l$(grafton_NAME) -I$(TESTDIR) -I$(SRCDIR)
 
 CLEANFILES+=$(check_OBJECTS)
 $(check_OBJECTS): $(check_SOURCES)
