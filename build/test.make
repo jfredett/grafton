@@ -1,11 +1,14 @@
 check_NAME=check_grafton
 
 check_BINSRC=$(TESTDIR)/$(check_NAME).c
+check_HEADER=$(TESTDIR)/$(check_NAME).h
 check_SOURCES=$(filter-out $(check_BINSRC),$(shell find $(TESTDIR) -name *.c))
 check_OBJECTS=$(check_SOURCES:$(TESTDIR)/%.c=$(OBJDIR)/%.o)
 check_DEPS=-lzmq -lczmq -lyajl -lcheck
 
 check_BINARY=$(BINDIR)/$(check_NAME)
+
+check_SUITES=$(check_SOURCES:$(TESTDIR)/%.c=$(TESTDIR)/suites/%.suite)
 
 # Flags
 check_BIN_CFLAGS=-L"$(shell readlink -f ./$(LIBDIR)/)" -l$(grafton_NAME) -I$(TESTDIR) -I$(SRCDIR)
@@ -13,8 +16,19 @@ check_BIN_CFLAGS=-L"$(shell readlink -f ./$(LIBDIR)/)" -l$(grafton_NAME) -I$(TES
 CLEANFILES+=$(check_OBJECTS)
 $(check_OBJECTS): $(check_SOURCES)
 
+$(TESTDIR)/suites/%.suite: $(TESTDIR)/%.c
+	@mkdir -p $(shell dirname $@)
+	ruby build/test_suite_create.rb $< > $@
+
+CLEANFILES+=$(check_SUITES)
+$(check_SUITES): $(check_SOURCES)
+
+CLEANFILES+=$(check_BINSRC)
+$(check_BINSRC): $(check_SUITES) $(check_HEADER)
+	ruby build/test_runner_create.rb > $@
+
 DISTCLEANFILES+=$(check_BINARY)
-$(check_BINARY): $(check_OBJECTS) $(grafton_LIBRARY)
+$(check_BINARY): $(check_BINSRC) $(check_OBJECTS) $(grafton_LIBRARY)
 	####==> Building $@
 	$(CC) ${CFLAGS} ${check_BIN_CFLAGS} $(check_BINSRC) $(check_DEPS) -o $@
 
