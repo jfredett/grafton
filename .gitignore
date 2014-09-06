@@ -8,3 +8,4 @@ bin/*
 lib/*
 tags
 test/suites
+test/check_grafton.c
