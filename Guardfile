@@ -22,3 +22,7 @@ guard :shell do
     system('ctags -R .')
   end
 end
+
+guard :bundler do
+  watch('Gemfile')
+end
