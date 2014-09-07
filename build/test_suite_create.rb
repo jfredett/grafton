@@ -14,8 +14,8 @@ File.open(file) do |f|
   end
 end
 
-puts '#include "../check_grafton.h"'
-puts "#include \"#{file.gsub('test/','../')}\""
+puts '#include "check_grafton.h"'
+puts "#include \"#{file.gsub('test/','')}\""
 puts
 puts "START_TEST_SUITE(#{suite_name}, \"#{description}\")"
 puts 'FIXTURE(setup, teardown)'
