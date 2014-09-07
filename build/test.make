@@ -33,5 +33,7 @@ check: $(check_BINARY) $(grafton_LIBRARY)
 CLEANFILES+=$(check_OBJECTS)
 CLEANFILES+=$(check_SUITES)
 CLEANFILES+=$(check_BINSRC)
+# also clean out the generated suite directory
+CLEANFILES+="test/suites"
 
 DISTCLEANFILES+=$(check_BINARY)
