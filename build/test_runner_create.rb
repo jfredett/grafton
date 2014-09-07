@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
+require 'find'
+
+def find_suites
+  @suites ||= Find.find('test/suites')
+                  .select { |path| File.extname(path) == '.suite' }
+end
 
 puts %{
 #include <stdlib.h>
@@ -7,13 +13,13 @@ puts %{
 #include "check_grafton.h"
 }
 
-Dir['test/suites/**/*.suite'].each do |suite|
+find_suites.each do |suite|
   puts "#include \"#{suite.gsub('test/', '')}\""
 end
 
 puts 'TEST_MAIN'
 
-Dir['test/suites/**/*.suite'].each do |suite|
+find_suites.each do |suite|
   puts "SUITE(#{File.basename(suite).gsub('.suite','')})"
 end
 
