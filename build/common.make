@@ -5,7 +5,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 
 clean:
 	####==> Cleaning
-	-rm -rf $(CLEANFILES) $(shell echo $(CLEANFILES) | xargs dirname)
+	-rm -rf $(CLEANFILES)
 
 distclean: clean
 	####==> Cleaning Distfiles
