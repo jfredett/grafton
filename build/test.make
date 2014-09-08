@@ -30,6 +30,10 @@ check: $(check_BINARY) $(grafton_LIBRARY)
 	####==> Running tests
 	bin/check_grafton
 
+# to please travis
+.PHONY: test
+test: check
+
 CLEANFILES+=$(check_OBJECTS)
 CLEANFILES+=$(check_SUITES)
 CLEANFILES+=$(check_BINSRC)
