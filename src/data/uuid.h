@@ -8,3 +8,4 @@ typedef struct _uuid {
 uuid* get_uuid(void);
 bool uuid_cmp(uuid* a, uuid* b);
 bool uuid_null(uuid* a);
+void free_uuid(uuid* a);

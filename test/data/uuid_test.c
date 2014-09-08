@@ -14,6 +14,8 @@ START_TEST (get_uuid_should_return_a_uuid) {
   uuid* uuid = get_uuid();
 
   ck_assert(!uuid_null(uuid));
+
+  free_uuid(uuid);
 }
 END_TEST
 
@@ -22,5 +24,8 @@ START_TEST (get_uuid_should_not_return_the_same_uuid_twice) {
   uuid* uuid_2 = get_uuid();
 
   ck_assert(uuid_cmp(uuid_1, uuid_2));
+
+  free_uuid(uuid_1);
+  free_uuid(uuid_2);
 }
 END_TEST

@@ -19,6 +19,11 @@ uuid* get_uuid(void) {
   return u;
 }
 
+void free_uuid(uuid* a) {
+  free(a->string);
+  free(a);
+}
+
 bool uuid_null(uuid* a) {
   return strcmp(a->string, "") == 0;
 }
