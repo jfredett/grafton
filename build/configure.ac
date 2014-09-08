@@ -17,6 +17,12 @@ AC_CONFIG_FILES([Makefile])
 
 AC_CHECK_LIB([uuid], [uuid_generate])
 
+# check for + set up dependences for test libraries
+TEST_LIBS=
+AC_CHECK_LIB([check], [__ck_assert_failed],
+             [TEST_LIBS+="-lcheck"])
+AC_SUBST(TEST_LIBS)
+
 # Set up cflags
 
 CFLAGS=

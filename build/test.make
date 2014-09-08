@@ -4,7 +4,7 @@ check_BINSRC=$(TESTDIR)/$(check_NAME).c
 check_HEADER=$(TESTDIR)/$(check_NAME).h
 check_SOURCES=$(filter-out $(check_BINSRC),$(shell find $(TESTDIR) -name *.c))
 check_OBJECTS=$(check_SOURCES:$(TESTDIR)/%.c=$(OBJDIR)/%.o)
-check_DEPS=$(LIBS) -lcheck
+check_DEPS=$(LIBS) $(TEST_LIBS)
 check_BINARY=$(BINDIR)/$(check_NAME)
 check_SUITES=$(check_SOURCES:$(TESTDIR)/%.c=$(TESTDIR)/suites/%.suite)
 
