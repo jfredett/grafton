@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'pry'
-
 file = ARGV[0]
 suite_name = File.basename(file).gsub('.c', '')
 description = ARGV[1] || suite_name

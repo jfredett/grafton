@@ -4,7 +4,7 @@ check_BINSRC=$(TESTDIR)/$(check_NAME).c
 check_HEADER=$(TESTDIR)/$(check_NAME).h
 check_SOURCES=$(filter-out $(check_BINSRC),$(shell find $(TESTDIR) -name *.c))
 check_OBJECTS=$(check_SOURCES:$(TESTDIR)/%.c=$(OBJDIR)/%.o)
-check_DEPS=-lzmq -lczmq -lyajl -lcheck
+check_DEPS=$(LIBS) -lcheck
 check_BINARY=$(BINDIR)/$(check_NAME)
 check_SUITES=$(check_SOURCES:$(TESTDIR)/%.c=$(TESTDIR)/suites/%.suite)
 
@@ -24,7 +24,7 @@ $(check_BINSRC): $(check_SUITES) $(check_HEADER)
 
 $(check_BINARY): $(check_BINSRC) $(check_OBJECTS) $(grafton_LIBRARY)
 	####==> Building $@
-	$(CC) ${CFLAGS} ${check_BIN_CFLAGS} $(check_BINSRC) $(check_DEPS) -o $@
+	$(CC) ${CFLAGS} $(check_DEPS) ${check_BIN_CFLAGS} $(check_BINSRC) -o $@
 
 check: $(check_BINARY) $(grafton_LIBRARY)
 	####==> Running tests

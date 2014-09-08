@@ -1,3 +1,8 @@
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y util-linux uuid-dev check
+
 language: c
 
 compiler:
