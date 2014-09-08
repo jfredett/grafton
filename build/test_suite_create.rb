@@ -18,7 +18,7 @@ puts '#include "check_grafton.h"'
 puts "#include \"#{file.gsub('test/','')}\""
 puts
 puts "START_TEST_SUITE(#{suite_name}, \"#{description}\")"
-puts 'FIXTURE(setup, teardown)'
+puts "FIXTURE(#{suite_name}_setup, #{suite_name}_teardown)"
 
 tests.each do |t|
   puts "TEST(#{t})"
