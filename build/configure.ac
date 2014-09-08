@@ -12,6 +12,7 @@ AC_INCLUDES_DEFAULT
 AC_CHECK_HEADERS([zmq.h])
 AC_CHECK_HEADERS([czmq.h])
 AC_CHECK_HEADERS([check.h])
+AC_CHECK_HEADERS([uuid/uuid.h])
 # yajl doesn't have a yajl.h >.<
 AC_CHECK_HEADERS([yajl/yajl_parse.h])
 
