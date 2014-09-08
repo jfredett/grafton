@@ -1,3 +1,8 @@
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y util-linux check
+
 language: c
 
 compiler:
