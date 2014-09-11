@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-autoconf -o build/configure build/configure.ac
-
-build/configure $@
-
-rm -rf autom4te.cache
-rm -f config.log
