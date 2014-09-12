@@ -6,7 +6,7 @@ before_install:
 
 language: c
 
-script: script/build tests
+script: script/build
 
 compiler:
   - clang
