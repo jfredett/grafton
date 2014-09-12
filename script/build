@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+function _pushd() {
+  pushd $@ &>/dev/null
+}
+
+function _popd() {
+  popd $@ &>/dev/null
+}
+
+function configure() {
+    mkdir -p build
+    _pushd build && \
+    cmake ..    && \
+    _popd
+}
+
+function grafton() {
+  $0 configure && \
+  make -C build
+}
+
+function tests() {
+  $0 grafton && \
+  make -C build test
+}
+
+cmd=$1
+shift
+${cmd:-grafton} $@
