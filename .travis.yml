@@ -3,7 +3,7 @@ before_install:
   - sudo add-apt-repository -y ppa:andykimpe/cmake3
   - sudo apt-get update -qq
     # build dependencies
-  - sudo apt-get install -y cmake3
+  - sudo apt-get install -y cmake3 &>/dev/null
     # app dependencies
   - sudo apt-get install -y util-linux check
 
