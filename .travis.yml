@@ -1,6 +1,10 @@
 
 before_install:
+  - echo "yes" | sudo add-apt-repository ppa:kalakris/cmake
   - sudo apt-get update -qq
+    # build dependencies
+  - sudo apt-get install -y cmake
+    # app dependencies
   - sudo apt-get install -y util-linux check
 
 language: c
