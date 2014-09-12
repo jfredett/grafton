@@ -26,3 +26,8 @@ bool uuid_null(uuid* a) {
 bool uuid_cmp(uuid* a, uuid* b) {
   return strcmp(a->string, b->string);
 }
+
+void free_uuid(uuid* a) {
+  free(a->string);
+  free(a);
+}

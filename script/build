@@ -17,12 +17,21 @@ function configure() {
 
 function grafton() {
   $0 configure && \
-  make -C build
+    make -C build
 }
 
 function tests() {
   $0 grafton && \
-  make -C build test
+    make -C build test
+}
+
+function run() {
+  $0 grafton && \
+    bin/grafton
+}
+
+function clean() {
+  rm -rf build
 }
 
 cmd=$1
