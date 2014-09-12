@@ -16,7 +16,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
 set(CMAKE_C_FLAGS "-g -Wall")
 
 
-# extend this if we ever go deeper than 2 layers of subdirs 
+# extend this if we ever go deeper than 2 layers of subdirs
 file(GLOB grafton_SOURCES
   src/*.c
   src/**/*.c
