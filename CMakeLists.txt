@@ -26,6 +26,10 @@ include_directories(src)
   #test/**/**/*.c)
 #include_directories(test)
 
+add_executable(check_grafton ${grafton_SOURCES} ${check_grafton_SOURCES})
+add_executable(grafton ${grafton_SOURCES})
+add_library(graftondb ${grafton_SOURCES})
+
 #find_library(check check_LIB)
 #target_link_libraries(check_grafton ${check_LIB})
 
@@ -43,6 +47,3 @@ target_link_libraries(graftondb ${uuid_LIB})
   #DEPENDS MakeTable
   #)
 
-add_executable(check_grafton ${grafton_SOURCES} ${check_grafton_SOURCES})
-add_executable(grafton ${grafton_SOURCES})
-add_library(graftondb ${grafton_SOURCES})
