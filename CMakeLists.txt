@@ -26,19 +26,16 @@ include_directories(src)
   #test/**/**/*.c)
 #include_directories(test)
 
-add_executable(check_grafton ${grafton_SOURCES} ${check_grafton_SOURCES})
+#add_executable(check_grafton ${grafton_SOURCES} ${check_grafton_SOURCES})
 add_executable(grafton ${grafton_SOURCES})
 add_library(graftondb ${grafton_SOURCES})
 
 #find_library(check check_LIB)
 #target_link_libraries(check_grafton ${check_LIB})
 
-
 find_library(uuid uuid_LIB)
 target_link_libraries(grafton ${uuid_LIB})
 target_link_libraries(graftondb ${uuid_LIB})
-
-
 
 # add the command to generate the source code
 #add_custom_command (
