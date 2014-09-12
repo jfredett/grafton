@@ -1,10 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 project(grafton)
 
-find_path(UUID_INCLUDE_DIR uuid/uuid.h)
-find_library(UUID_LIBRARY NAMES uuid PATH)
-
-find_library(CHECK_LIBRARY NAMES check PATH)
 
 set(PROJECT_BINARY_DIR ./bin)
 set(PROJECT_SOURCE_DIR ./src)
@@ -20,10 +16,25 @@ file(GLOB grafton_SOURCES
   src/*.c
   src/**/*.c
   src/**/**/*.c)
-
 include_directories(src)
 
-link_directories(lib)
+# test stuff
+
+#file(GLOB check_grafton_SOURCES
+  #test/*.c
+  #test/**/*.c
+  #test/**/**/*.c)
+#include_directories(test)
+
+#find_library(check check_LIB)
+#target_link_libraries(check_grafton ${check_LIB})
+
+
+find_library(uuid uuid_LIB)
+target_link_libraries(grafton ${uuid_LIB})
+target_link_libraries(graftondb ${uuid_LIB})
+
+
 
 # add the command to generate the source code
 #add_custom_command (
@@ -32,5 +43,6 @@ link_directories(lib)
   #DEPENDS MakeTable
   #)
 
+add_executable(check_grafton ${grafton_SOURCES} ${check_grafton_SOURCES})
 add_executable(grafton ${grafton_SOURCES})
 add_library(graftondb ${grafton_SOURCES})
